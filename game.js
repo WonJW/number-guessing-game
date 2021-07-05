@@ -1,21 +1,34 @@
+const range = document.querySelector(".range-num__input")
+const guess = document.querySelector(".guess-num__input")
 const submitButtom = document.querySelector(".guess-num__btn")
 const result = document.querySelector(".result")
-const rangeNum = document.querySelector(".range-num__input")
-const gueesNum = document.querySelector(".guess-num__input")
 const resultGuess = document.querySelector(".result__guess")
 const resultFinal = document.querySelector(".result__final")
 
+
 function playGame() {
-    if (rangeNum.value === "" || gueesNum.value === ""){
+    const rangeNum = range.value
+    const guessNum = guess.value
+    if (rangeNum === "" || guessNum === "") {
         result.classList.remove("hidden")
         resultFinal.classList.add("hidden")
-        resultGuess.innerText = "Please wirte a all number!"
+        if (rangeNum === "" && guessNum === "") {
+            resultGuess.innerText = "Please wirte a all number!"
+        } else if (rangeNum === ""){
+            resultGuess.innerText = "Please wirte a range number!"
+        } else {
+            resultGuess.innerText = "Please wirte a guess number!"
+        }  
+    } else if (parseInt(rangeNum) < parseInt(guessNum)) {
+        result.classList.remove("hidden")
+        resultFinal.classList.add("hidden")
+        resultGuess.innerText = "Your guess number is bigger than range number!"
     } else {       
-        const computerChoice = Math.floor(Math.random() * rangeNum.value)
+        const computerChoice = Math.floor(Math.random() * rangeNum)
         result.classList.remove("hidden")
         resultFinal.classList.remove("hidden")
-        resultGuess.innerText = `Your choice : ${gueesNum.value}, computer choice : ${computerChoice}.`
-        if(parseInt(gueesNum.value) === computerChoice){
+        resultGuess.innerText = `Your choice : ${guessNum}, computer choice : ${computerChoice}.`
+        if(parseInt(guessNum) === computerChoice){
             resultFinal.innerText = "You win!"
         } else {
             resultFinal.innerText = "You lose..."
