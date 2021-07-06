@@ -11,15 +11,17 @@
         <div class="title">
             <h1>Random Number Game</h1>
         </div>
-        <div class="range-num">
-            <h2 class="range-num__text">Genarate a number between 0 and</h2>
-            <input class="range-num__input" type="number"/>
-        </div>
-        <div class="guess-num">
-            <h3 class="guess-num__text">Guess the number</h3>
-            <input class="guess-num__input" type="number"/>
-            <input class="guess-num__btn" type="submit" value="Play!"/>
-        </div>
+        <form class="numbers">
+            <div class="range-num">
+                <h2 class="range-num__text">Genarate a number between 0 and</h2>
+                <input class="range-num__input" required type="number" min="0" />
+            </div>
+            <div class="guess-num">
+                <h3 class="guess-num__text">Guess the number</h3>
+                <input class="guess-num__input" required type="number" min="0" />
+                <input class="guess-num__btn" type="submit" value="Play!"/>
+            </div>
+        </form>
         <div class="result hidden">
             <h3 class="result__guess"></h3>
             <h3 class="result__final"></h3>
